@@ -158,7 +158,7 @@ let UsuarioController = class UsuarioController {
             else {
                 console.log('usuario:', (_c = p.usuario) === null || _c === void 0 ? void 0 : _c.celular);
                 if ((_d = p.usuario) === null || _d === void 0 ? void 0 : _d.celular) {
-                    await this.whatsappWebService.sendMessage(`591${(_e = p.usuario) === null || _e === void 0 ? void 0 : _e.celular}`, `Hola soy *${usuario.nombres} ${usuario.paterno} ${usuario.materno}* necesito ayuda, mi ubicación es https://www.google.com/maps/search/?api=1&query=${ubicationData.lat},${ubicationData.lng}.`).then(resp => {
+                    const respWWeb = await this.whatsappWebService.sendMessage(`591${(_e = p.usuario) === null || _e === void 0 ? void 0 : _e.celular}`, `Hola soy *${usuario.nombres} ${usuario.paterno} ${usuario.materno}* necesito ayuda, mi ubicación es https://www.google.com/maps/search/?api=1&query=${ubicationData.lat},${ubicationData.lng}.`).then(resp => {
                         var _a;
                         if (!resp.error)
                             sendMessages.push(`591${(_a = p.usuario) === null || _a === void 0 ? void 0 : _a.celular}`);
@@ -167,6 +167,7 @@ let UsuarioController = class UsuarioController {
                         console.log(err);
                         return err;
                     });
+                    console.log('resp send message: ', respWWeb);
                 }
             }
             return p;
